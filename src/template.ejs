@@ -8,7 +8,7 @@
 {{< hint <%- event.anonymous ? 'warning' : 'info' %> >}}
 **<%= event.name %>**
 
-<%= event.inputs.map(i => `* \`${i.name}\` : ${i.type}, *${i.indexed ? 'indexed': 'notIndxed'}*`).join('\n') %>
+<%= event.inputs.map(i => `* \`${i.name}\` : ${i.type}, *${i.indexed ? 'indexed': 'notIndexed'}*`).join('\n') %>
 {{< /hint >}}
 <% } %>
 
