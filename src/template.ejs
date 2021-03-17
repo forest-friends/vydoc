@@ -1,0 +1,53 @@
+## <%= contract.contractName %> `<%= version %>`
+---
+
+<% if (contract.abi.filter(e => e.type == 'event').length > 0) { %>
+### Events
+<% } %>
+<% for (let event of contract.abi.filter(e => e.type == 'event')) { %>
+{{< hint <%- event.anonymous ? 'warning' : 'info' %> >}}
+**<%= event.name %>**
+
+<%= event.inputs.map(i => `* \`${i.name}\` : ${i.type}, *${i.indexed ? 'indexed': 'notIndxed'}*`).join('\n') %>
+{{< /hint >}}
+<% } %>
+
+<% for (const [key, value] of Object.entries(contract.methods)) { %>
+## `<%= value.hash %>` <%= key %>
+> <%- value.type ? `type: \`${value.mutate} ${value.type}\`` : '' %> <%- value.gas ? `gas: \`${value.gas}\`` : '' %>
+
+<% if (value.userdoc && value.userdoc.notice) { %>
+<%= value.userdoc.notice %>    
+<% } %>
+<% if (value.devdoc && value.devdoc.details) { %>
+*<%= value.devdoc.details %>*
+<% } %>
+<% if (value.devdoc && value.devdoc.params) { %>
+Arguments:
+    <% for (const [field, description] of Object.entries(value.devdoc.params)) { %>
+* `<%- field %>` - <%- description %>
+    <% } %>
+<% } %>
+<% if (value.devdoc && value.devdoc.returns) { %>
+Returns:
+    <% for (const [field, description] of Object.entries(value.devdoc.returns)) { %>
+* `<%- field %>` - <%- description %>
+    <% } %>
+
+
+<% } %>
+
+
+<% } %>
+
+
+{{< expand "ABI" "..." >}}
+```json
+<%- JSON.stringify(contract.abi, null, 2) %>
+```
+{{< /expand >}}
+
+
+{{< expand "Byte code" "..." >}}
+``` <%- contract.bytecode %> ```
+{{< /expand >}}
