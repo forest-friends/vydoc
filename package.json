@@ -2,9 +2,16 @@
     "name": "vydoc",
     "version": "0.0.0",
     "description": "Vyper docs generator",
-    "main": "lib/index.js",
+    "keywords": [
+        "vyper",
+        "docs",
+        "natspec"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "compile": "rm -rf lib/* && ./node_modules/.bin/babel src -d lib && chmod +x ./lib/bin/vydoc.js"
+        "clean": "rm -rf lib",
+        "build": "npm run clean && tsc && chmod +x lib/bin/vydoc.js"
     },
     "bin": {
         "vydoc": "./lib/bin/vydoc.js"
@@ -21,11 +28,20 @@
     },
     "homepage": "https://github.com/forest-friends/vydoc",
     "dependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-es2015": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
+        "chalk": "^4.1.0",
         "cli-progress": "^3.9.0",
+        "cli-table": "^0.3.6",
         "ejs": "^3.1.6",
+        "ramda": "^0.27.1",
+        "ramda-async": "^1.1.2",
         "yargs": "^16.2.0"
+    },
+    "devDependencies": {
+        "@types/cli-progress": "^3.9.1",
+        "@types/cli-table": "^0.3.0",
+        "@types/ejs": "^3.0.6",
+        "@types/node": "^14.14.35",
+        "@types/ramda": "^0.27.39",
+        "@types/yargs": "^16.0.0"
     }
 }
