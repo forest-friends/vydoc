@@ -1,2 +1,66 @@
-## <%= fileName %>
-> vyper-version: `<%= data.vyperVersion %>`
+# <%= fileName %>
+> vyper: `<%- data.compilerVersion %>`
+> <%- data.author ? `author: \`${data.author}\`` : '' %>
+> <%- data.license ? `license: \`${data.license}\`` : '' %>
+
+<% if (data.title) { %>
+**<%- data.title %>**
+<% } %>
+
+<% if (data.details) { %>
+<%- data.details %>
+<% } %>
+
+<% if (data.notice) { %>
+*<%- data.notice %>*
+<% } %>
+
+<% if (data.events.length > 0) { %>
+## Events
+<% } %>
+<% for (let event of data.events) { %>
+{{< hint <%- event.anonymous ? 'warning' : 'info' %> >}}
+**<%= event.name %>**
+
+<%= event.inputs.map(i => `* \`${i.name}\` : ${i.type}, *${i.indexed ? 'indexed': 'notIndexed'}*`).join('\n') %>
+{{< /hint >}}
+<% } %>
+
+## Methods
+<% for (const [methodName, method] of Object.entries(data.methods)) { %>
+### <%= methodName.replace(/\(.*/, '') %>
+> <%- method.type ? `type: \`${method.stateMutability} ${method.type}\`` : '' %>
+> <%- method.gas ? `gas: \`${method.gas}\`` : '' %>
+
+<% if (method.notice) { %>
+<%= method.notice %>    
+<% } %>
+<% if (method.details) { %>
+*<%= method.details %>*
+<% } %>
+<% if (method.params) { %>
+Arguments:
+    <% for (const [field, description, type] of Object.entries(method.params)) { %>
+* `<%- field %>`: <%- type %> - *<%- description %>*
+    <% } %>
+<% } %>
+<% if (method.returns) { %>
+Returns:
+<% for (const [field, description] of Object.entries(method.returns)) { %>
+* `<%- field %>` - <%- description %>
+<% } %>
+<% } %>
+
+
+<% } %>
+
+
+## ABI
+```json
+<%- data.abi %>
+```
+
+## Byte code
+```bin
+<%- data.bytecode %>
+```
