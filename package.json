@@ -1,6 +1,6 @@
 {
     "name": "vydoc",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Vyper docs generator",
     "keywords": [
         "vyper",
@@ -17,11 +17,18 @@
         "vydoc": "./lib/bin/vydoc.js"
     },
     "license": "MIT",
-    "author": {
-        "name": "Peter Kozhevnikov",
-        "email": "kozhevnikov.peter@gmail.com",
-        "url": "https://github.com/kozhevnikov-peter"
-    },
+    "contributors": [
+        {
+            "name": "Peter Kozhevnikov",
+            "email": "kozhevnikov.peter@gmail.com",
+            "url": "https://github.com/kozhevnikov-peter"
+        },
+        {
+            "name": "Andrew Zhiganov",
+            "email": "aalex8204@gmail.com",
+            "url": "https://github.com/azhiganov"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/forest-friends/vydoc"
