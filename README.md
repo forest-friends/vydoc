@@ -1,6 +1,12 @@
-# vydoc
+# VyDoc: Documentation Generator fo Vyper
 Vyper contracts to docs
 
+
+## Getting Started
+
+```
+sudo npm install vydoc -g
+```
 
 ## Usage
 
