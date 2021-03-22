@@ -1,18 +1,6 @@
-import progress from "cli-progress";
 import { join } from "path";
-import { find, propEq } from "ramda";
-import { exec, execSync } from "child_process";
-import {
-  mergeWith,
-  mergeAll,
-  compose,
-  pipe,
-  tap,
-  map,
-  head,
-  always,
-  equals,
-} from "ramda";
+import { exec } from "child_process";
+import { mergeWith, tap, head } from "ramda";
 import { pipeAsync } from "ramda-async";
 import { makeProgressBar } from "./progress";
 import { AbiElement, Contract, RawContract } from "./types";
