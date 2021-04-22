@@ -1,6 +1,6 @@
 import Table from "cli-table";
 
-interface TableOptions {
+export interface TableOptions {
   chars: Partial<
     Record<
       | "top"

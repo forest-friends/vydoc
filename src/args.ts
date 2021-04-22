@@ -28,6 +28,12 @@ export const options = option("input", {
     description: "ddocs format",
     default: cliArgumentsDefault.format,
   })
+  .option("template", {
+    alias: "t",
+    type: "string",
+    description: "template to use",
+    default: cliArgumentsDefault.template, 
+  })
   .help()
   .alias("help", "h");
 
