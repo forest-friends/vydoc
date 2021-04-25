@@ -18,5 +18,5 @@ const vyperFileExtentions = ["vy"];
     async (filePaths) =>
       await compileContracts(argv.input, filePaths, argv.compiler)
         .then(tap(() => console.log(blue("\nGenerate docs..."))))
-        .then((contracts) => generateDocs(argv.format, argv.output, contracts))
+        .then((contracts) => generateDocs(argv.format, argv.output, contracts, argv.template))
   )(argv))(options.argv);

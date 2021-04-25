@@ -7,5 +7,7 @@ export declare const options: import("yargs").Argv<{
     compiler: string;
 } & {
     format: "markdown";
+} & {
+    template: string;
 }>;
 export declare const printCliArguments: (x: unknown) => void;

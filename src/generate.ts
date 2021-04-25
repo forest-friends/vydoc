@@ -4,14 +4,16 @@ import { join } from "path";
 import { cond, equals, pipe, T, tap } from "ramda";
 import { makeProgressBar } from "./progress";
 import { Contract, Format } from "./types";
+import path from 'path';
 
 export const generateDocs = async (
   format: Format,
   output: string,
-  contracts: { fileName: string; data: Contract }[]
+  contracts: { fileName: string; data: Contract }[],
+  templatePath: string
 ) =>
   cond<Format, any>([
-    [equals("markdown"), () => generateMarkDown(contracts, output)],
+    [equals("markdown"), () => generateMarkDown(contracts, output, templatePath)],
     [
       T,
       () => {
@@ -22,7 +24,8 @@ export const generateDocs = async (
 
 const generateMarkDown = async (
   contracts: { fileName: string; data: Contract }[],
-  output: string
+  output: string,
+  templatePath: string
 ) =>
   pipe(
     readFileSync,
@@ -51,4 +54,4 @@ const generateMarkDown = async (
           )
           .map(tap(handler))
       )(makeProgressBar(contracts.length))
-  )(join(__dirname, "../src/templates/markdown.ejs"));
+  )(templatePath);

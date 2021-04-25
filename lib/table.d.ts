@@ -1,4 +1,4 @@
-interface TableOptions {
+export interface TableOptions {
     chars: Partial<Record<"top" | "top-mid" | "top-left" | "top-right" | "bottom" | "bottom-mid" | "bottom-left" | "bottom-right" | "left" | "left-mid" | "mid" | "mid-mid" | "right" | "right-mid" | "middle", string>>;
     truncate: string;
     colors: boolean;
@@ -14,4 +14,3 @@ interface TableOptions {
     head: string[];
 }
 export declare const makeTable: (options?: Partial<TableOptions> | undefined) => (values: any[]) => string;
-export {};

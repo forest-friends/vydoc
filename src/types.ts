@@ -3,6 +3,7 @@ export type CliArguments = {
   output: string;
   compiler: string;
   format: Format;
+  template: string
 };
 
 export type Format = "markdown";
@@ -12,6 +13,7 @@ export const cliArgumentsDefault = {
   output: "./docs",
   compiler: "vyper",
   format: "markdown",
+  template: "../src/templates/markdown.ejs"
 } as CliArguments;
 
 export type Contract = {

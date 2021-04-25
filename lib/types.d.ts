@@ -3,6 +3,7 @@ export declare type CliArguments = {
     output: string;
     compiler: string;
     format: Format;
+    template: string;
 };
 export declare type Format = "markdown";
 export declare const cliArgumentsDefault: CliArguments;
